@@ -1,0 +1,27 @@
+  name: Deploy to Azure
+  on:
+    push:
+      branches:
+        - dev
+  env:
+   prefix: 'advs1'
+  jobs:
+    deploy:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v3
+
+        - name: Log in to Azure
+          uses: azure/login@v1
+          with:
+            creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+        - name: Build and deploy Container App
+          uses: azure/container-apps-deploy-action@v1
+          with:
+            appSourcePath: ${{ github.workspace }}
+            acrName: ${{ env.prefix }}acr
+            resourceGroup: ${{ vars.RESOURCE_GROUP_NAME }}
+            containerAppName: ${{ env.prefix }}containerapp
+            containerAppEnvironment: ${{ env.prefix }}containerappenvironment
