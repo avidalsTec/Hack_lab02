@@ -29,5 +29,5 @@ jobs:
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           resourceGroupName: ${{ vars.RESOURCE_GROUP_NAME }}
           template: ./config/main.bicep
-          parameters: namePrefix =${{ env.prefix }} location=EastUS
+          parameters: namePrefix= ${{ env.prefix }} location=EastUS
         continue-on-error: true
