@@ -2,8 +2,10 @@ name: Deploy Infrastructure
 
 # Este flujo de trabajo se ejecuta manualmente
 on:
- push: [dev]
-  workflow_dispatch:
+ push: 
+  branches:
+    -dev
+ workflow_dispatch:
 env:
  prefix: 'ADVS1'
 
