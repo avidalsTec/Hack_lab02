@@ -3,14 +3,15 @@ import dbConnect from "../lib/dbConnect";
 import Pet from "../models/Pet";
 
 // TODO: Import Hours component
-
+import Hours from '../components/Hours';
 const Index = ({ pets }) => {
 
   return (
     <>
 
       {/* TODO: Display Hours component */}
-
+      <Hours />
+      
       {/* Create a card for each pet */}
       {pets.map((pet) => (
         <div key={pet._id}>
